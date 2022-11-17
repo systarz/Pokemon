@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class Pokemon0 {
+public abstract class Pokemon {
 	 	private String nom;
 	    private int niveau;
 	    private int hp;
@@ -8,7 +8,7 @@ public class Pokemon0 {
 	    private static Random r = new Random();
 	    private static final int niveauMax = 10;
 	    
-	    public Pokemon0(String nom) {
+	    public Pokemon(String nom) {
 	        this.nom = nom;
 	        this.niveau = r.nextInt(1, niveauMax+1);
 	        this.hp = 2*this.niveau;
@@ -52,7 +52,7 @@ public class Pokemon0 {
 	    }
 
 	    public static void setR(Random r) {
-	        Pokemon0.r = r;
+	        Pokemon.r = r;
 	    }
 
 	    public static int getNiveaumax() {
@@ -74,10 +74,7 @@ public class Pokemon0 {
 	     * @param p
 	     */
 	    
-	    public void attaquer(Pokemon0 p) {
-	        System.out.println("J'attaque "+ p.nom);
-	        p.hp -= this.atk;
-	    }
+	    public abstract void attaquer(Pokemon p);
 	    //ToString du pokemon A ARRANGER
 	    public String toString() {
 	        return "Je m'appelle "+getNom()+"\n   je suis de niveau "+getNiveau()+"\n   j'ai "+getHp()+" points de vie\n   mon attaquee de base est de "+getAtk();
@@ -87,15 +84,16 @@ public class Pokemon0 {
 	    	System.out.println("[Pokemon " + getNom() + "] : " + msg);
 	    	
 	    }
+	    public abstract void subir(Pokemon p);
 	    public static void main(String[] args) {
 	    	// test Pokemon
 			System.out.println("\nTEST POKEMON0 \n");
-			Pokemon0 p1 = new Pokemon0("Rhinolove");
-			Pokemon0 p2 = new Pokemon0("Chovsourir");
+			/*Pokemon p1 = new Pokemon("Rhinolove");
+			Pokemon p2 = new Pokemon("Chovsourir");
 			p1.log(p1.toString());
 			p2.log(p2.toString());
 			p1.attaquer(p2);
-			p2.log(p2.toString());
+			p2.log(p2.toString()); */
 		}
 	    
 }
